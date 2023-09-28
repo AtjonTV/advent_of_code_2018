@@ -4,6 +4,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 use std::collections::{HashMap, HashSet};
+use std::fmt::Debug;
 use std::fs;
 use std::ops::Sub;
 use std::time::Instant;
@@ -50,6 +51,13 @@ fn read_file_by_lines(path: &str) -> Vec<String> {
     .filter(|x| !x.is_empty())
     .collect()
 }
+
+fn assert<T: PartialEq + Debug>(use_example: bool, expect_example: T, expect: T, actual: T) {
+    if use_example {
+        assert_eq!(expect_example, expect);
+    } else {
+        assert_eq!(expect, actual);
+    }
 }
 
 fn day1_part1(use_example: bool) {
@@ -64,11 +72,8 @@ fn day1_part1(use_example: bool) {
         }
     }
 
-    if use_example {
-        assert_eq!(3, sum);
-    } else {
-        assert_eq!(423, sum);
-    }
+    let result = sum;
+    assert(use_example, 3, 423, result);
     println!("Day 1 Part 1 ({:?}): {}", Instant::now().sub(solution_start), sum);
 }
 
@@ -96,11 +101,7 @@ fn day1_part2(use_example: bool) {
     }
 
     let result = matching_sum.expect("Failed to find matching");
-    if use_example {
-        assert_eq!(10, result);
-    } else {
-        assert_eq!(61126, result);
-    }
+    assert(use_example, 10, 61126, result);
     println!("Day 1 Part 2 ({:?}): {}", Instant::now().sub(solution_start), result);
 }
 
@@ -138,11 +139,7 @@ fn day2_part1(use_example: bool) {
     }
 
     let result = total_matching_two * total_matching_three;
-    if use_example {
-        assert_eq!(12, result);
-    } else {
-        assert_eq!(7688, result);
-    }
+    assert(use_example, 12, 7688, result);
     println!("Day 2 Part 1 ({:?}): {}", Instant::now().sub(solution_start), result);
 }
 
