@@ -43,7 +43,13 @@ fn get_input_path(day_name: &str, part_name: &str, use_example: bool) -> String 
 
 fn read_file_by_lines(path: &str) -> Vec<String> {
     let input = fs::read_to_string(path.clone()).expect(&*format!("Could not read input file: {}", path));
-    input.lines().map(|x| x.to_string()).filter(|x| !x.is_empty()).collect()
+
+    input
+    .lines()
+    .map(|x| x.to_string())
+    .filter(|x| !x.is_empty())
+    .collect()
+}
 }
 
 fn day1_part1(use_example: bool) {
