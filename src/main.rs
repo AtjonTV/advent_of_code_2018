@@ -126,8 +126,8 @@ fn day2_part1(use_example: bool) {
                 }
                 map
             });
-        total_matching_two += line_result.
-            iter()
+        total_matching_two += line_result
+            .iter()
             .find_map(|(&key, &val)| if val == 2 { Some(key) } else { None })
             .iter()
             .count();
