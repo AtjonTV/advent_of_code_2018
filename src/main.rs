@@ -147,17 +147,13 @@ fn day2_part1(use_example: bool) {
 #[allow(dead_code)]
 fn example_part(use_example: bool) {
     let solution_start = Instant::now();
-    let input_path = get_input_path("day2", "part1", use_example);
+    let input_path = get_input_path("x", "y", use_example);
     #[allow(unused_variables)]
     let input = read_file_by_lines(&input_path);
 
     // TODO: Process input and calculate result
 
     let result = 0;
-    if use_example {
-        assert_eq!(1, result);
-    } else {
-        assert_eq!(1, result);
-    }
+    assert(use_example, 1, 1, result);
     println!("Day X Part Y ({:?}): {}", Instant::now().sub(solution_start), result);
 }
